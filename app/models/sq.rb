@@ -1,6 +1,9 @@
 class Sq < ApplicationRecord
   # Direct associations
 
+  belongs_to :sqtype,
+             :class_name => "SqType"
+
   # Indirect associations
 
   # Validations

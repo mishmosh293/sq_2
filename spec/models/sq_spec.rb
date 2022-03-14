@@ -4,6 +4,8 @@ RSpec.describe Sq, type: :model do
   
     describe "Direct Associations" do
 
+    it { should belong_to(:sqtype) }
+
     end
 
     describe "InDirect Associations" do
