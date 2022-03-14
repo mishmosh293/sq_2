@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   root :to => "sqs#index"
   resources :sq_types
   resources :sqs
