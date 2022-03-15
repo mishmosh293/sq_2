@@ -7,7 +7,11 @@
     <dl class="mb-1">
       <dt>Sqtype</dt>
       <!-- Display sqtype_id start -->
-      <dd><%= sq.sqtype_id %></dd>
+      <dd>
+        <% if @sq.sqtype.present? %>
+          <%= link_to sq.sqtype, sq.sqtype %>
+        <% end %>
+      </dd>
       <!-- Display sqtype_id end -->
 
       <dt>Name</dt>
