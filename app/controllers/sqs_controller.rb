@@ -42,8 +42,14 @@ class SqsController < ApplicationController
   # DELETE /sqs/1
   def destroy
     @sq.destroy
-    redirect_to sqs_url, notice: 'Sq was successfully destroyed.'
+    message = "Sq was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to sqs_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
