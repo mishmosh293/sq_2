@@ -17,7 +17,9 @@
 
       <dt>Pic</dt>
       <!-- Display pic start -->
-      <dd><%= sq.pic %></dd>
+      <dd>
+        <%= cl_image_tag @sq.pic, class: "img-fluid" %>
+      </dd>
       <!-- Display pic end -->
 
       <dt>Description</dt>

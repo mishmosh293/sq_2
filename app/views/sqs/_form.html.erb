@@ -68,7 +68,7 @@
 
     <%= f.label :pic %>
     <!-- Input for pic start -->
-    <%= f.text_field :pic, class: pic_class, placeholder: "Enter pic" %>
+    <%= f.file_field :pic, class: "form-control" %>
     <!-- Input for pic end -->
     <% if pic_was_invalid %>
       <% sq.errors.full_messages_for(:pic).each do |message| %>

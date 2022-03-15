@@ -1,4 +1,6 @@
 class Sq < ApplicationRecord
+  mount_base64_uploader :pic, PicUploader
+
   # Direct associations
 
   belongs_to :sqtype,
