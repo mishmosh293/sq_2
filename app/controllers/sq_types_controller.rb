@@ -3,7 +3,8 @@ class SqTypesController < ApplicationController
 
   # GET /sq_types
   def index
-    @sq_types = SqType.page(params[:page]).per(10)
+    @q = SqType.ransack(params[:q])
+    @sq_types = @q.result(:distinct => true).includes(:sqs).page(params[:page]).per(10)
   end
 
   # GET /sq_types/1
