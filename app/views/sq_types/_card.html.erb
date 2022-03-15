@@ -6,14 +6,10 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Name</dt>
-      <!-- Display name start -->
       <dd><%= sq_type.name %></dd>
-      <!-- Display name end -->
 
       <dt>Description</dt>
-      <!-- Display description start -->
       <dd><%= sq_type.description %></dd>
-      <!-- Display description end -->
 
     </dl>
 
@@ -22,21 +18,17 @@
         <%= link_to_show_or_back sq_type, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link sq_type start -->
       <div class="col">
         <%= link_to edit_sq_type_url(sq_type), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link sq_type end -->
 
-      <!-- Delete link sq_type start -->
       <div class="col">
         <%= link_to sq_type, method: :delete, data: { confirm: "Do you really want to delete this sq_type?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link sq_type end -->
     </div>
   </div>
 

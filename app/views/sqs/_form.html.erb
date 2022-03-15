@@ -1,7 +1,6 @@
 <% was_validated = sq.errors.any? %>
 
 <%= form_with(model: sq, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for sqtype_id start -->
   <div class="form-group">
     <% sqtype_class = "form-control" %>
     <% sqtype_was_invalid = sq.errors.include?(:sqtype) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :sqtype_id %>
-    <!-- Input for sqtype_id start -->
     <%= f.collection_select :sqtype_id, SqType.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for sqtype_id end -->
     <% if sqtype_was_invalid %>
       <% sq.errors.full_messages_for(:sqtype).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for sqtype_id end -->
-  <!-- Label and input for name start -->
   <div class="form-group">
     <% name_class = "form-control" %>
     <% name_was_invalid = sq.errors.include?(:name) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :name %>
-    <!-- Input for name start -->
     <%= f.text_field :name, class: name_class, placeholder: "Enter name" %>
-    <!-- Input for name end -->
     <% if name_was_invalid %>
       <% sq.errors.full_messages_for(:name).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for name end -->
-  <!-- Label and input for pic start -->
   <div class="form-group">
     <% pic_class = "form-control" %>
     <% pic_was_invalid = sq.errors.include?(:pic) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :pic %>
-    <!-- Input for pic start -->
     <%= f.file_field :pic, class: "form-control" %>
-    <!-- Input for pic end -->
     <% if pic_was_invalid %>
       <% sq.errors.full_messages_for(:pic).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,8 +67,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for pic end -->
-  <!-- Label and input for description start -->
   <div class="form-group">
     <% description_class = "form-control" %>
     <% description_was_invalid = sq.errors.include?(:description) %>
@@ -93,9 +80,7 @@
     <% end %>
 
     <%= f.label :description %>
-    <!-- Input for description start -->
     <%= f.text_field :description, class: description_class, placeholder: "Enter description" %>
-    <!-- Input for description end -->
     <% if description_was_invalid %>
       <% sq.errors.full_messages_for(:description).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -104,6 +89,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for description end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>
