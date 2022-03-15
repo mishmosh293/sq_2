@@ -1,24 +1,19 @@
 class SqsController < ApplicationController
   before_action :set_sq, only: %i[show edit update destroy]
 
-  # GET /sqs
   def index
     @q = Sq.ransack(params[:q])
     @sqs = @q.result(distinct: true).includes(:sqtype).page(params[:page]).per(10)
   end
 
-  # GET /sqs/1
   def show; end
 
-  # GET /sqs/new
   def new
     @sq = Sq.new
   end
 
-  # GET /sqs/1/edit
   def edit; end
 
-  # POST /sqs
   def create
     @sq = Sq.new(sq_params)
 
@@ -34,7 +29,6 @@ class SqsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /sqs/1
   def update
     if @sq.update(sq_params)
       redirect_to @sq, notice: "Sq was successfully updated."
@@ -43,7 +37,6 @@ class SqsController < ApplicationController
     end
   end
 
-  # DELETE /sqs/1
   def destroy
     @sq.destroy
     message = "Sq was successfully deleted."
@@ -56,12 +49,10 @@ class SqsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_sq
     @sq = Sq.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def sq_params
     params.require(:sq).permit(:sqtype_id, :name, :pic, :description)
   end
