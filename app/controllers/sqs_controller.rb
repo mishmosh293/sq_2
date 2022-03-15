@@ -24,7 +24,12 @@ class SqsController < ApplicationController
     @sq = Sq.new(sq_params)
 
     if @sq.save
-      redirect_to @sq, notice: 'Sq was successfully created.'
+      message = 'Sq was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @sq, notice: message
+      end
     else
       render :new
     end

@@ -8,6 +8,7 @@ class SqTypesController < ApplicationController
 
   # GET /sq_types/1
   def show
+    @sq = Sq.new
   end
 
   # GET /sq_types/new
