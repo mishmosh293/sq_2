@@ -9,6 +9,9 @@ class SqResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :sqtype,
+             resource: SqTypeResource
+
   # Indirect associations
 
 end

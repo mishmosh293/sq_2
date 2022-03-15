@@ -7,6 +7,9 @@ class SqTypeResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :sqs,
+             foreign_key: :sqtype_id
+
   # Indirect associations
 
 end
