@@ -3,7 +3,7 @@ class SqsController < ApplicationController
 
   # GET /sqs
   def index
-    @sqs = Sq.all
+    @sqs = Sq.page(params[:page]).per(10)
   end
 
   # GET /sqs/1

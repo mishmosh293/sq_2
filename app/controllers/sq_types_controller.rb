@@ -3,7 +3,7 @@ class SqTypesController < ApplicationController
 
   # GET /sq_types
   def index
-    @sq_types = SqType.all
+    @sq_types = SqType.page(params[:page]).per(10)
   end
 
   # GET /sq_types/1
