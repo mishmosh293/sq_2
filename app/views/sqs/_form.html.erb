@@ -16,7 +16,7 @@
 
     <%= f.label :sqtype_id %>
     <!-- Input for sqtype_id start -->
-    <%= f.number_field :sqtype_id, class: sqtype_class, placeholder: "Enter sqtype" %>
+    <%= f.collection_select :sqtype_id, SqType.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for sqtype_id end -->
     <% if sqtype_was_invalid %>
       <% sq.errors.full_messages_for(:sqtype).each do |message| %>
