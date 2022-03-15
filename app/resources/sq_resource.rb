@@ -13,5 +13,4 @@ class SqResource < ApplicationResource
              resource: SqTypeResource
 
   # Indirect associations
-
 end

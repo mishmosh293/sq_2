@@ -13,7 +13,7 @@ class Api::V1::SqsController < Api::V1::GraphitiController
     sq = SqResource.build(params)
 
     if sq.save
-      render jsonapi: sq, status: 201
+      render jsonapi: sq, status: :created
     else
       render jsonapi_errors: sq
     end
@@ -33,7 +33,7 @@ class Api::V1::SqsController < Api::V1::GraphitiController
     sq = SqResource.find(params)
 
     if sq.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: sq
     end

@@ -2,8 +2,8 @@ class SqType < ApplicationRecord
   # Direct associations
 
   has_many   :sqs,
-             :foreign_key => "sqtype_id",
-             :dependent => :destroy
+             foreign_key: "sqtype_id",
+             dependent: :destroy
 
   # Indirect associations
 
@@ -14,5 +14,4 @@ class SqType < ApplicationRecord
   def to_s
     name
   end
-
 end

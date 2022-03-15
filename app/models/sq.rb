@@ -4,7 +4,7 @@ class Sq < ApplicationRecord
   # Direct associations
 
   belongs_to :sqtype,
-             :class_name => "SqType"
+             class_name: "SqType"
 
   # Indirect associations
 
@@ -15,5 +15,4 @@ class Sq < ApplicationRecord
   def to_s
     sqtype.to_s
   end
-
 end

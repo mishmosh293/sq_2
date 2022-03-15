@@ -1,15 +1,14 @@
 class SqsController < ApplicationController
-  before_action :set_sq, only: [:show, :edit, :update, :destroy]
+  before_action :set_sq, only: %i[show edit update destroy]
 
   # GET /sqs
   def index
     @q = Sq.ransack(params[:q])
-    @sqs = @q.result(:distinct => true).includes(:sqtype).page(params[:page]).per(10)
+    @sqs = @q.result(distinct: true).includes(:sqtype).page(params[:page]).per(10)
   end
 
   # GET /sqs/1
-  def show
-  end
+  def show; end
 
   # GET /sqs/new
   def new
@@ -17,17 +16,16 @@ class SqsController < ApplicationController
   end
 
   # GET /sqs/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /sqs
   def create
     @sq = Sq.new(sq_params)
 
     if @sq.save
-      message = 'Sq was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "Sq was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @sq, notice: message
       end
@@ -39,7 +37,7 @@ class SqsController < ApplicationController
   # PATCH/PUT /sqs/1
   def update
     if @sq.update(sq_params)
-      redirect_to @sq, notice: 'Sq was successfully updated.'
+      redirect_to @sq, notice: "Sq was successfully updated."
     else
       render :edit
     end
@@ -49,22 +47,22 @@ class SqsController < ApplicationController
   def destroy
     @sq.destroy
     message = "Sq was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to sqs_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_sq
-      @sq = Sq.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def sq_params
-      params.require(:sq).permit(:sqtype_id, :name, :pic, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_sq
+    @sq = Sq.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def sq_params
+    params.require(:sq).permit(:sqtype_id, :name, :pic, :description)
+  end
 end

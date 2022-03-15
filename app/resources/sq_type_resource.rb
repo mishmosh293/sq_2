@@ -11,5 +11,4 @@ class SqTypeResource < ApplicationResource
              foreign_key: :sqtype_id
 
   # Indirect associations
-
 end

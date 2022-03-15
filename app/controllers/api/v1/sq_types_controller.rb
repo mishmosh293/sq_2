@@ -13,7 +13,7 @@ class Api::V1::SqTypesController < Api::V1::GraphitiController
     sq_type = SqTypeResource.build(params)
 
     if sq_type.save
-      render jsonapi: sq_type, status: 201
+      render jsonapi: sq_type, status: :created
     else
       render jsonapi_errors: sq_type
     end
@@ -33,7 +33,7 @@ class Api::V1::SqTypesController < Api::V1::GraphitiController
     sq_type = SqTypeResource.find(params)
 
     if sq_type.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: sq_type
     end
